@@ -36,20 +36,18 @@ const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
 const getWheatherData = async (city) => {
     const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city);
     const data = await res.json();
-    console.log(data);
+
     displayData(data);
 };
 const getWheathercoord = async (coordis) => {
     const lon = coordis.longitude;
     const lat = coordis.latitude;
-    console.log("hola");
-    console.log(lat);
+
     const res = await fetch(apiUrl2 + "lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&lang=sp&units=metric");
-    console.log("hola");
-    console.log(lat);
+
     const data = await res.json();
     const send = data;
-    console.log(send);
+
     displayData(send);
 };
 
@@ -58,7 +56,7 @@ const getWheathercoord = async (coordis) => {
 }; */
 searchcity.addEventListener("submit", e => {
     e.preventDefault();
-    console.log(search.valeu);
+
     getWheatherData(search.value);
 });
 
@@ -70,11 +68,6 @@ const options = {
 
 function success(pos) {
     const crd = pos.coords;
-
-    console.log("Tu ubicación actual es:");
-    console.log(`Latitud : ${crd.latitude}`);
-    console.log(`Longitud: ${crd.longitude}`);
-    console.log(`Más o menos ${crd.accuracy} metros.`);
 
     getWheathercoord(crd);
 }
