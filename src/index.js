@@ -15,8 +15,6 @@ const max = document.getElementById("max");
 
 const displayData = (objeto) => {
     zone.textContent = objeto.name;
-    console.log("que pasa qui¿");
-    console.log(objeto.name);
 
     tempcelcius.textContent = Math.floor(objeto.main.temp);
     description.textContent = objeto.weather[0].description;
