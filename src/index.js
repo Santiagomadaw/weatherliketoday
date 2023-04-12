@@ -20,22 +20,22 @@ const displayData = (objeto) => {
     const h = dt.getHours().toString().padStart(2, "0");
     const m = dt.getMinutes().toString().padStart(2, "0");
     date.textContent = `${h}:${m}`;
-
-    console.log(sr);
-    console.log(objeto.dt > objeto.sys.sunrise);
-    console.log(dt);
-    console.log(objeto.dt > objeto.sys.sunset);
-    console.log(ss);
+    /*
+        console.log(sr);
+        console.log(objeto.dt > objeto.sys.sunrise);
+        console.log(dt);
+        console.log(objeto.dt > objeto.sys.sunset);
+        console.log(ss); */
 
     if (objeto.dt > objeto.sys.sunrise && objeto.dt < objeto.sys.sunset) {
         container.classList.remove("night");
         container.classList.add("day");
-        console.log("dia");
+        /* console.log("dia"); */
     } else {
         container.classList.remove("day");
         container.classList.add("night");
 
-        console.log("noche");
+        /* console.log("noche"); */
     };
     zone.textContent = objeto.name;
 
@@ -54,11 +54,11 @@ const apiKey = "a00065117a35d1c18108761088dca9fa";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lang=sp&units=metric";
 const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
 const getWheatherData = async (city) => {
-    const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city, options);
+    const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city);
     const data = await res.json();
 
     displayData(data);
-    console.log(data);
+    /* console.log(data); */
 };
 const getWheathercoord = async (coordis) => {
     const lon = coordis.longitude;
@@ -68,7 +68,7 @@ const getWheathercoord = async (coordis) => {
 
     const data = await res.json();
     const send = data;
-    console.log(data);
+    /* console.log(data); */
 
     displayData(send);
 };
@@ -90,7 +90,7 @@ const options = {
 
 function success(pos) {
     const crd = pos.coords;
-    console.log(pos.coords);
+    /*  console.log(pos.coords); */
     getWheathercoord(crd);
 }
 
