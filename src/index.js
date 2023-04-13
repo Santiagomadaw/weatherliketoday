@@ -22,11 +22,11 @@ const displayData = (objeto) => {
 
     date.textContent = `${h}:${m}`;
     /*
-      console.log(sr);
-  console.log(objeto.dt > objeto.sys.sunrise);
-  console.log(dt);
-  console.log(objeto.dt > objeto.sys.sunset);
-  console.log(ss); */
+                                                      console.log(sr);
+                                                  console.log(objeto.dt > objeto.sys.sunrise);
+                                                  console.log(dt);
+                                                  console.log(objeto.dt > objeto.sys.sunset);
+                                                  console.log(ss); */
 
     if (objeto.dt > objeto.sys.sunrise && objeto.dt < objeto.sys.sunset) {
         container.classList.remove("night");
@@ -59,10 +59,21 @@ const getWheatherData = async (city) => {
     /*  console.log(language); */
     const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city + ", " + language);
     const data = await res.json();
+    /*  console.log(data.message); */
 
-    displayData(data);
+    if (data.message == "city not found") {
+        const res1 = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city);
+        const data2 = await res1.json();
+        /*       console.log("hay"); */
+        displayData(data2);
+    } else {
+        console.log("no hay");
+        /*         console.log(data); */
+        displayData(data);
+    }
     /*   console.log(data); */
 };
+
 const getWheathercoord = async (coordis) => {
     const lon = -4.8333;/* coordis.longitude; */
     const lat = 37.9;/* coordis.latitude; */
