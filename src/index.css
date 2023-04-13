@@ -22,6 +22,7 @@ body {
   outline: none;
   text-align: center;
   text-transform: capitalize;
+  z-index: 5;
   
 }
 
