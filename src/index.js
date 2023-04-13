@@ -22,11 +22,11 @@ const displayData = (objeto) => {
 
     date.textContent = `${h}:${m}`;
     /*
-                                                        console.log(sr);
-                                                    console.log(objeto.dt > objeto.sys.sunrise);
-                                                    console.log(dt);
-                                                    console.log(objeto.dt > objeto.sys.sunset);
-                                                    console.log(ss); */
+                                                              console.log(sr);
+                                                          console.log(objeto.dt > objeto.sys.sunrise);
+                                                          console.log(dt);
+                                                          console.log(objeto.dt > objeto.sys.sunset);
+                                                          console.log(ss); */
 
     if (objeto.dt > objeto.sys.sunrise && objeto.dt < objeto.sys.sunset) {
         container.classList.remove("night");
@@ -56,7 +56,7 @@ const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lang=sp&units=me
 const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
 const getWheatherData = async (city) => {
     const language = navigator.language.split("-")[1];
-    /*  console.log(language); */
+    console.log(language);
     const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city + ", " + language);
     const data = await res.json();
     /*  console.log(data.message); */
@@ -75,8 +75,8 @@ const getWheatherData = async (city) => {
 };
 
 const getWheathercoord = async (coordis) => {
-    const lon = -4.8333;/* coordis.longitude; */
-    const lat = 37.9;/* coordis.latitude; */
+    const lon = coordis.longitude;
+    const lat = coordis.latitude;
 
     const res = await fetch(apiUrl2 + "lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&lang=sp&units=metric");
 
