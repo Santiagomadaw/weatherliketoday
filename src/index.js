@@ -21,11 +21,11 @@ const displayData = (objeto) => {
     const m = dt.getMinutes().toString().padStart(2, "0");
     date.textContent = `${h}:${m}`;
     /*
-        console.log(sr);
-        console.log(objeto.dt > objeto.sys.sunrise);
-        console.log(dt);
-        console.log(objeto.dt > objeto.sys.sunset);
-        console.log(ss); */
+                console.log(sr);
+                console.log(objeto.dt > objeto.sys.sunrise);
+                console.log(dt);
+                console.log(objeto.dt > objeto.sys.sunset);
+                console.log(ss); */
 
     if (objeto.dt > objeto.sys.sunrise && objeto.dt < objeto.sys.sunset) {
         container.classList.remove("night");
@@ -73,9 +73,6 @@ const getWheathercoord = async (coordis) => {
     displayData(send);
 };
 
-/* window.onload = () => {
-    getWheathercoord();
-}; */
 searchcity.addEventListener("submit", e => {
     e.preventDefault();
 

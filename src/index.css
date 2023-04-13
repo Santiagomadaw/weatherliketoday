@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 body {
@@ -75,9 +76,9 @@ body {
 }
 
 #weathericon{
-  translate: 0 -1.5rem;
+  translate: 0 -1rem;
   width: 150px;
-  height:130px;
+  height:125px;
 }
 
 .tempsimbol{
@@ -88,6 +89,13 @@ body {
 
 }
 
+.datos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  
+}
 
 .searchcity > button{
   visibility: hidden;
@@ -103,6 +111,7 @@ body {
 
 .date{
   color:white;
+  
 }
 
 .description, .cityname{
@@ -114,8 +123,8 @@ body {
 
 .minmax{
   width: 18rem;
+  height: 2.4rem;
   color:white;
-  flex: 10%;
   border-top: 2px solid #000;
   display: flex;
   justify-content: space-around;
@@ -135,3 +144,4 @@ body {
   margin: .1rem;
 }
 
+}
