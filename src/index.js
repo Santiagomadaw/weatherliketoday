@@ -19,13 +19,14 @@ const displayData = (objeto) => {
     const ss = new Date(objeto.sys.sunset * 1000);
     const h = dt.getHours().toString().padStart(2, "0");
     const m = dt.getMinutes().toString().padStart(2, "0");
+
     date.textContent = `${h}:${m}`;
     /*
-                console.log(sr);
-                console.log(objeto.dt > objeto.sys.sunrise);
-                console.log(dt);
-                console.log(objeto.dt > objeto.sys.sunset);
-                console.log(ss); */
+      console.log(sr);
+  console.log(objeto.dt > objeto.sys.sunrise);
+  console.log(dt);
+  console.log(objeto.dt > objeto.sys.sunset);
+  console.log(ss); */
 
     if (objeto.dt > objeto.sys.sunrise && objeto.dt < objeto.sys.sunset) {
         container.classList.remove("night");
@@ -37,7 +38,7 @@ const displayData = (objeto) => {
 
         /* console.log("noche"); */
     };
-    zone.textContent = objeto.name;
+    zone.textContent = objeto.name + " " + objeto.sys.country;
 
     tempcelcius.textContent = Math.floor(objeto.main.temp);
     description.textContent = objeto.weather[0].description;
@@ -54,21 +55,24 @@ const apiKey = "a00065117a35d1c18108761088dca9fa";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lang=sp&units=metric";
 const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
 const getWheatherData = async (city) => {
-    const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city);
+    const language = navigator.language.split("-")[1];
+    /*  console.log(language); */
+    const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city + ", " + language);
     const data = await res.json();
 
     displayData(data);
-    /* console.log(data); */
+    /*   console.log(data); */
 };
 const getWheathercoord = async (coordis) => {
-    const lon = coordis.longitude;
-    const lat = coordis.latitude;
+    const lon = -4.8333;/* coordis.longitude; */
+    const lat = 37.9;/* coordis.latitude; */
 
     const res = await fetch(apiUrl2 + "lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&lang=sp&units=metric");
 
     const data = await res.json();
+
     const send = data;
-    /* console.log(data); */
+    /*  console.log(data); */
 
     displayData(send);
 };
@@ -87,7 +91,7 @@ const options = {
 
 function success(pos) {
     const crd = pos.coords;
-    /*  console.log(pos.coords); */
+    /*  console.log(pos); */
     getWheathercoord(crd);
 }
 
