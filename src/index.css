@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Chakra Petch', sans-serif;
+  user-select: none; 
 }
 
 body {
@@ -23,6 +24,7 @@ body {
   text-align: center;
   text-transform: capitalize;
   z-index: 5;
+  user-select: text; 
   
 }
 

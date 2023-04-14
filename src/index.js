@@ -80,7 +80,7 @@ const getip = async (ct) => {
     } catch (error) {
         const language = navigator.language.split("-")[1];
         /*         console.log(language);
-                                console.log(ct); */
+                                        console.log(ct); */
         (ct == undefined) ? getWheatherData("la roda, ES") : getWheatherData(ct + ", " + language);
     }
 };
