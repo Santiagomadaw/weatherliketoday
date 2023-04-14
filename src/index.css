@@ -27,7 +27,7 @@ body {
 }
 
 .container{
-  position:relative;
+  position: absolute;
   width: 18rem;
   height: 24rem;
   display: flex;
@@ -51,10 +51,11 @@ body {
   padding: 1rem 0 0;
   gap: 0.15rem;
   background: linear-gradient(180deg, #ffffff5b, #a8a8a861);
-  z-index: -2;
+  z-index: -12;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  transform: translate(0, 0);
 
 }
 
@@ -64,12 +65,26 @@ body {
 
 .opened{
   transition: transform 1s;
-  transform: translate(0, 11rem);
+  transform: translate(0, 6rem);
+ 
+}
+
+.opened2{
+  transition: transform 1s;
+  transform: translate(0, -6rem);
+  
 }
 
 .closed{
   transition:transform 1s;
-  transform: translate(0, -1rem);
+  transform: translate(0, 0);
+  
+}
+
+.closed2{
+  transition:transform 1s;
+  transform: translate(0, 0);
+  
 }
 
 .container.day{

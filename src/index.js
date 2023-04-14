@@ -80,7 +80,7 @@ const getip = async (ct) => {
     } catch (error) {
         const language = navigator.language.split("-")[1];
         /*         console.log(language);
-                console.log(ct); */
+                                console.log(ct); */
         (ct == undefined) ? getWheatherData("la roda, ES") : getWheatherData(ct + ", " + language);
     }
 };
@@ -223,11 +223,15 @@ botton.addEventListener("click", e => {
     if (open === 0) {
         cristal.classList.remove("closed");
         cristal.classList.add("opened");
+        container.classList.remove("closed2");
+        container.classList.add("opened2");
         open = 1;
         botton.textContent = ("-");
     } else {
         cristal.classList.remove("opened");
         cristal.classList.add("closed");
+        container.classList.remove("opened2");
+        container.classList.add("closed2");
         open = 0;
         botton.textContent = ("+");
     }
