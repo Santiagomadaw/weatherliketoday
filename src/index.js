@@ -60,7 +60,7 @@ const displayData = (objeto) => {
     min.textContent = Math.floor(objeto.main.temp_min);
     max.textContent = Math.floor(objeto.main.temp_max);
     winang.style.transform = "rotate(" + objeto.wind.deg + "deg)";
-    console.log(objeto.wind.deg);
+
     windV.textContent = (objeto.wind.speed);
     hum.textContent = (objeto.main.humidity);
     pres.textContent = (objeto.main.pressure / 1000);
@@ -70,7 +70,7 @@ const displayData = (objeto) => {
 
 /* traer ip */
 
-const getip = async () => {
+const getip = async (ct) => {
     try {
         const respuestaRaw = await fetch("http://ip-api.com/json/?fields=61439");
         const respuesta = await respuestaRaw.json();
@@ -78,7 +78,10 @@ const getip = async () => {
 
         return respuesta;
     } catch (error) {
-        getWheatherData("la roda, ES");
+        const language = navigator.language.split("-")[1];
+        /*         console.log(language);
+                console.log(ct); */
+        (ct == undefined) ? getWheatherData("la roda, ES") : getWheatherData(ct + ", " + language);
     }
 };
 
@@ -117,8 +120,17 @@ const getWheatherData = async (city) => {
         const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city);
 
         const data = await res.json();
-        console.log(data);
-        displayData(data);
+        /* console.log(data); */
+        if (data.message == "city not found") {
+            /*  En caso de no haber coincidencia hago la llamada obviando el pais */
+            const city2 = city.split(",")[0];
+            const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city2);
+            const data = await res.json();
+            displayData(data);
+        } else {
+            /* Si no hay error simplemente mando los datos al dom */
+            displayData(data);
+        }
     } else if (noGeo === 0) {
         /* no ha metido pais, solo ciudad */
         /* para que de la ciudad mas cercana en caso de varios */
@@ -160,7 +172,7 @@ const getWheatherData = async (city) => {
         /*  si NO esta habilitado el acceso a localizacion */
         /* Hago la llamada a un a api para teterminar pais con una api de IP */
 
-        const countryCode = await getip();
+        const countryCode = await getip(city);
 
         /* Tras recuperar los datos de la ip uso el pais para hacer la llamada a la api del tiempo */
 
