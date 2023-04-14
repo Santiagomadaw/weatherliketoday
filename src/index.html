@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+  <!--   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,11 +39,46 @@
       <div class="cityname" id="zone"></div>
       <div class="date" id="date"></div>
     </div>
-    <div class="minmax">
-      <div class="mini"><small>min</small><span id="min">12</span>ºC</div>
-      <div class="maxi"><small>max</small><span id="max">32</span>ºC</div>
-    </div>
+    <div class="plus" id="plus">+</div>
 
+    <div class="cristal closed" id="cristal">
+      <div class="hor2">
+        <div class="viento">
+          <div class="wind1">
+
+            <p>Viento</p>
+            <div class="hor">
+              <span id="windvel">12</span>
+              <p>Km</p>
+            </div>
+          </div>
+          <div class="wind2">
+
+            <div class="ver">N</div>
+            <div class="hor">
+              <p>W</p>
+              <div class="dart" id="winang"></div>
+              <p>O</p>
+            </div>
+            <div class="ver">S</div>
+          </div>
+        </div>
+        <div class="viento">
+          <div class="ver2">
+            <p>Humedad</p>
+            <span class="hor3"><span id="hum"></span>%</span>
+          </div>
+          <div class="ver2">
+            <p>Presion</p>
+            <span class="hor3"><span id="pres"></span>Bar</span>
+          </div>
+        </div>
+      </div>
+      <div class="minmax">
+        <div class="mini"><small>min</small><span id="min">12</span>ºC</div>
+        <div class="maxi"><small>max</small><span id="max">32</span>ºC</div>
+      </div>
+    </div>
   </div>
 
 

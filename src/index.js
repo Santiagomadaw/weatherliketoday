@@ -2,20 +2,26 @@
  */
 const container = document.getElementById("container");
 const searchcity = document.getElementById("searchcity");
+const hum = document.getElementById("hum");
+const pres = document.getElementById("pres");
 const search = document.getElementById("search");
 const tempcelcius = document.getElementById("tempcelcius");
 const weathericon = document.getElementById("weathericon");
 const description = document.getElementById("description");
 const zone = document.getElementById("zone");
+const botton = document.getElementById("plus");
+const cristal = document.getElementById("cristal");
 const date = document.getElementById("date");
 const min = document.getElementById("min");
 const max = document.getElementById("max");
+const windV = document.getElementById("windvel");
+const winang = document.getElementById("winang");
 const apiKey = "a00065117a35d1c18108761088dca9fa";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lang=sp&units=metric";
 const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
 
 /* uso variable global para un semaforo y las coordenadas. mirar a futuro si se puede hacer de otro modo */
-
+let open = 0;
 let noGeo = 0;
 let crd;
 let pos;
@@ -53,6 +59,11 @@ const displayData = (objeto) => {
     description.textContent = objeto.weather[0].description;
     min.textContent = Math.floor(objeto.main.temp_min);
     max.textContent = Math.floor(objeto.main.temp_max);
+    winang.style.transform = "rotate(" + objeto.wind.deg + "deg)";
+    console.log(objeto.wind.deg);
+    windV.textContent = (objeto.wind.speed);
+    hum.textContent = (objeto.main.humidity);
+    pres.textContent = (objeto.main.pressure / 1000);
     const icon = objeto.weather[0].icon;
     weathericon.innerHTML = `<img src="./icons/${icon}.png"></img>`;
 };
@@ -106,6 +117,7 @@ const getWheatherData = async (city) => {
         const res = await fetch(apiUrl + "&appid=" + apiKey + "&q=" + city);
 
         const data = await res.json();
+        console.log(data);
         displayData(data);
     } else if (noGeo === 0) {
         /* no ha metido pais, solo ciudad */
@@ -193,4 +205,18 @@ searchcity.addEventListener("submit", e => {
     e.preventDefault();
 
     getWheatherData(search.value);
+});
+botton.addEventListener("click", e => {
+    e.preventDefault();
+    if (open === 0) {
+        cristal.classList.remove("closed");
+        cristal.classList.add("opened");
+        open = 1;
+        botton.textContent = ("-");
+    } else {
+        cristal.classList.remove("opened");
+        cristal.classList.add("closed");
+        open = 0;
+        botton.textContent = ("+");
+    }
 });
