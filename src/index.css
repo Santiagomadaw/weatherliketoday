@@ -6,6 +6,8 @@
   user-select: none; 
 }
 
+/* --------------------------------------------------------------------------------- */
+
 body {
   background-image: radial-gradient(circle at 50% 39.65%, #ff56ff 0, #c14bff 25%, #783cf2 50%, #1b2cc7 75%, #001fa0 100%);
   min-height: 100vh;
@@ -13,7 +15,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* --------------------------------------------------------------------------------- */
+
 .searchcity{display: flex;}
+
+/* --------------------------------------------------------------------------------- */
 
 .search{
   padding: .4rem;
@@ -28,6 +35,8 @@ body {
   
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .container{
   position: absolute;
   width: 18rem;
@@ -39,7 +48,10 @@ body {
   align-items: center;
   padding: 1rem 0 0;
   gap: 0.15rem;
+  transition: transform 1s;
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .cristal{ 
   border: 1px solid #fff;
@@ -57,47 +69,113 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transform: translate(0, 0);
+  transition: transform 1s;
 
+}
+
+/* --------------------------------------------------------------------------------- */
+.cristal2{ 
+  border: 1px solid #fff;
+  position: absolute;
+  width: 9rem;
+  height: 18rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: .04rem .04rem .1rem .1rem#ffffffba;
+  padding: .5rem 0 0;
+  background: linear-gradient(180deg, #ffffff5b, #a8a8a861);
+  z-index: -12;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: transform 1s;
+
+}
+
+/* --------------------------------------------------------------------------------- */
+.compass{
+  border: 1px solid #fff;
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  overflow: hidden;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff5b, #a8a8a861);
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ 
+}
+
+/* --------------------------------------------------------------------------------- */
+.compass2{
+  border: 1px solid #fff;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: .5;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff5b, #a8a8a861);
+  z-index: 12;
+  gap: 0.1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:white;
+  font-size: small;
+ 
+}
+
+.compass3{
+  border: 1px solid #fff;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff5b, #a8a8a861);
+  z-index: 12;
+  gap: 0.1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:white;
+  font-size: small;
+}
+
+
+/* --------------------------------------------------------------------------------- */
+
+
+.plus2:hover {
+  cursor: pointer;
 }
 
 .plus:hover {
   cursor: pointer;
 }
 
-.opened{
-  transition: transform 1s;
-  transform: translate(0, 6rem);
- 
-}
+/* --------------------------------------------------------------------------------- */
 
-.opened2{
-  transition: transform 1s;
-  transform: translate(0, -6rem);
-  
-}
-
-.closed{
-  transition:transform 1s;
-  transform: translate(0, 0);
-  
-}
-
-.closed2{
-  transition:transform 1s;
-  transform: translate(0, 0);
-  
-}
-
+/* --------------------------------------------------------------------------------- */
 .container.day{
   background: linear-gradient(180deg, #00a2ff, #9ed5ff);
   border: 2px solid #333;
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .container.night{
   background: linear-gradient(180deg, rgb(0 0 68), #000eae);
   border: 2px solid #848484;
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .cityform{
   margin: 2rem auto 0;
@@ -110,6 +188,8 @@ body {
  
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .tempnumber{
   display: flex;
   align-items: center;
@@ -117,6 +197,8 @@ body {
   padding: none;
   height: 90px;
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .tempcelcius{
   text-align: center;
@@ -126,11 +208,15 @@ body {
 
 }
 
+/* --------------------------------------------------------------------------------- */
+
 #weathericon{
   translate: 0 -1rem;
   width: 150px;
   height:125px;
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .tempsimbol{
   text-align: center;
@@ -140,6 +226,8 @@ body {
 
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .datos{
   display: flex;
   flex-direction: column;
@@ -148,9 +236,13 @@ body {
   
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .searchcity > button{
   visibility: hidden;
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .location {
   display: flex;
@@ -160,10 +252,14 @@ body {
   align-items: center;
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .date{
   color:white;
   
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .description, .cityname{
   font-size: 1.3rem;
@@ -171,6 +267,9 @@ body {
   color:white;
   text-transform: capitalize;
 }
+
+/* --------------------------------------------------------------------------------- */
+p{ color:white;}
 
 .wind1 {
   width: 9rem;
@@ -185,11 +284,23 @@ body {
 
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .hor{
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.1rem;
 }
+
+/* --------------------------------------------------------------------------------- */
+
+.hor4{
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+/* --------------------------------------------------------------------------------- */
 
 .hor2{
   display: flex;
@@ -197,11 +308,15 @@ body {
 
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .hor3{
   display: flex;
   align-items: center;
   padding: 0.6rem;
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .ver2{
   width: 9rem;
@@ -212,6 +327,8 @@ body {
   border: 1px solid #fff;
 
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .wind2 {
   width: 9rem;
@@ -228,6 +345,8 @@ body {
 
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .minmax{
   width: 18rem;
   height: 2.4rem;
@@ -237,6 +356,8 @@ body {
   align-items: center;
  
 }
+
+/* --------------------------------------------------------------------------------- */
 
 .dart{
   border-radius: 50%;
@@ -250,6 +371,47 @@ body {
   
 }
 
+/* --------------------------------------------------------------------------------- */
+
+.dart2{
+  border-radius: 50%;
+  background-image: conic-gradient(at 50% 0%, rgb(0 0 255 / 0%) 45%,rgb(0 0 255 / 0%) 47%, rgb(255 255 255) 47%, rgb(255 255 255) 53%,rgb(0 0 255 / 0%) 53%,rgb(0 0 255 / 0%) 100%);
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  gap: .6rem;
+}
+
+min{
+  font-size: .3rem;
+  color:white;
+}
+
+/* --------------------------------------------------------------------------------- */
+
+.dart3{
+  border-radius: 50%;
+  background-image: conic-gradient(at 50% 0%, rgb(0 0 255 / 0%) 45%,rgb(0 0 255 / 0%) 47%, rgb(255 255 255) 47%, rgb(255 255 255) 53%,rgb(0 0 255 / 0%) 53%,rgb(0 0 255 / 0%) 100%);
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* --------------------------------------------------------------------------------- */
+
 .viento{
   border: 1px solid #fff;
   width: 9rem;
@@ -262,6 +424,7 @@ body {
   
 }
 
+/* --------------------------------------------------------------------------------- */
 
 .mini > span{
   font-size: 1.5rem;
@@ -269,16 +432,20 @@ body {
   margin: .1rem;
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .maxi > span{
   font-size: 1.5rem;
   color: tomato;
   margin: .1rem;
 }
 
+/* --------------------------------------------------------------------------------- */
+
 .plus{
-  translate: 0 -1rem;
+  translate: 0 -1.3rem;
   padding: 0;
   vertical-align: sub;
   color:white;
   font-size: xxx-large;
-}
+}}

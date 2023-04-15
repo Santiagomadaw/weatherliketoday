@@ -11,11 +11,15 @@ const description = document.getElementById("description");
 const zone = document.getElementById("zone");
 const botton = document.getElementById("plus");
 const cristal = document.getElementById("cristal");
+const cristal2 = document.getElementById("cristal2");
 const date = document.getElementById("date");
 const min = document.getElementById("min");
 const max = document.getElementById("max");
 const windV = document.getElementById("windvel");
 const winang = document.getElementById("winang");
+const gps = document.getElementById("gps");
+const compass = document.getElementById("compass");
+const compbt = document.getElementById("compbt");
 const apiKey = "a00065117a35d1c18108761088dca9fa";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?lang=sp&units=metric";
 const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
@@ -24,7 +28,7 @@ const apiUrl2 = "https://api.openweathermap.org/data/2.5/weather?";
 let open = 0;
 let noGeo = 0;
 let crd;
-let pos;
+let comp = 0;
 /* Función para modificar los elementos */
 
 const displayData = (objeto) => {
@@ -80,7 +84,7 @@ const getip = async (ct) => {
     } catch (error) {
         const language = navigator.language.split("-")[1];
         /*         console.log(language);
-                                        console.log(ct); */
+                                                                                                                                                                                                                                                                                                                                                                                                                console.log(ct); */
         (ct == undefined) ? getWheatherData("la roda, ES") : getWheatherData(ct + ", " + language);
     }
 };
@@ -218,21 +222,116 @@ searchcity.addEventListener("submit", e => {
 
     getWheatherData(search.value);
 });
+
 botton.addEventListener("click", e => {
     e.preventDefault();
-    if (open === 0) {
-        cristal.classList.remove("closed");
-        cristal.classList.add("opened");
-        container.classList.remove("closed2");
-        container.classList.add("opened2");
-        open = 1;
-        botton.textContent = ("-");
+    if (comp === 0) {
+        if (open === 0) {
+            cristal.style.transform = " translate(0, 6rem)";
+            container.style.transform = "translate(0, -6rem)";
+            cristal2.style.transform = "translate(0, -6rem)";
+            open = 1;
+            botton.textContent = ("-");
+        } else {
+            cristal.style.transform = " translate(0, 0rem)";
+            container.style.transform = "translate(0, -0rem)";
+            cristal2.style.transform = "translate(0, -0rem)";
+            open = 0;
+            botton.textContent = ("+");
+        }
     } else {
-        cristal.classList.remove("opened");
-        cristal.classList.add("closed");
-        container.classList.remove("opened2");
-        container.classList.add("closed2");
-        open = 0;
-        botton.textContent = ("+");
+        if (open === 0) {
+            cristal.style.transform = " translate(0, 10rem)";
+            container.style.transform = "translate(0, -2rem)";
+            cristal2.style.transform = "translate(0, -13rem)";
+            open = 1;
+            botton.textContent = ("-");
+        } else {
+            cristal.style.transform = " translate(0, 1rem)";
+            container.style.transform = "translate(0, 1rem)";
+            cristal2.style.transform = "translate(0, -10rem)";
+            open = 0;
+            botton.textContent = ("+");
+        }
     }
 });
+gps.addEventListener("click", e => {
+    e.preventDefault();
+    navigator.geolocation.getCurrentPosition(success, error);
+});
+compbt.addEventListener("click", e => {
+    e.preventDefault();
+    if (open === 0) {
+        if (comp === 0) {
+            cristal.style.transform = " translate(0, 1rem)";
+            container.style.transform = "translate(0, 1rem)";
+            cristal2.style.transform = "translate(0, -10rem)";
+            comp = 1;
+            compbt.style.opacity = "1";
+        } else {
+            cristal.style.transform = " translate(0, 0rem)";
+            container.style.transform = "translate(0, -0rem)";
+            cristal2.style.transform = "translate(0, -0rem)";
+            comp = 0;
+            compbt.style.opacity = ".5";
+        }
+    } else {
+        if (comp === 0) {
+            cristal.style.transform = " translate(0, 10rem)";
+            container.style.transform = "translate(0, -2rem)";
+            cristal2.style.transform = "translate(0, -13rem)";
+            comp = 1;
+            compbt.style.opacity = "1";
+        } else {
+            cristal.style.transform = " translate(0, 1rem)";
+            container.style.transform = "translate(0, 1rem)";
+            cristal2.style.transform = "translate(0, -10rem)";
+            comp = 0;
+            compbt.style.opacity = ".5";
+        }
+    }
+});
+
+/* const acl = new Accelerometer({ frequency: 60 });
+acl.addEventListener("reading", () => {
+  const radianes = Math.atan2(x, y);
+  const degrees = (radianes * 180) / Math.PI;
+
+  compass.style.transform = "rotate(" + degrees + "deg)";
+  console.log(`Acceleration along the X-axis ${acl.x}`);
+  console.log(`Acceleration along the Y-axis ${acl.y}`);
+  console.log(`Acceleration along the Z-axis ${acl.z}`);
+});
+
+acl.start(); */
+/* function onAccelerationChange(event) {
+    const acceleration = event.acceleration;
+    console.log(`Aceleración en X: ${acceleration.x}`);
+    console.log(`Aceleración en Y: ${acceleration.y}`);
+    console.log(`Aceleración en Z: ${acceleration.z}`);
+    const radianes = Math.atan2(acceleration.x, acceleration.y);
+    const degrees = (radianes * 180) / Math.PI;
+    compass.style.transform = "rotate(" + degrees + "deg)";
+}
+// Añadir un listener para el evento devicemotion
+window.addEventListener("devicemotion", onAccelerationChange);
+ */
+// Función que se ejecuta cuando se detecta un cambio en la orientación del dispositivo
+function onOrientationChange(event) {
+    const alpha = event.alpha - 90;
+    console.log(`Dirección en la brújula: ${alpha}`);
+    compass.style.transform = "rotate(" + alpha + "deg)";
+}
+
+// Añadir un listener para el evento deviceorientation
+window.addEventListener("deviceorientation", onOrientationChange);
+
+if (navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)) {
+    compbt.style.opacity = ".5";;
+};
