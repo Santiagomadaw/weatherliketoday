@@ -17,24 +17,24 @@
   
   
 
-  <script type="module" crossorigin src="/weatherliketoday/index-19f934f7.js"></script>
-  <link rel="stylesheet" href="/weatherliketoday/index-8856dbfd.css">
+  <script type="module" crossorigin src="/weatherliketoday/index-6e48860b.js"></script>
+  <link rel="stylesheet" href="/weatherliketoday/index-2656ba93.css">
 </head>
 
 <body>
-  <div class="cristal2">
+  <div class="cristal2" id="cristal2">
 
     <div class="compass" id="compass">
       <p>N</p>
       <div class="hor">
-        <p>E</p>
-        <div class="dart2"></div>
         <p>O</p>
+        <div class="dart2"></div>
+        <p>E</p>
       </div>
       <p>S</p>
     </div>
   </div>
-  <div class="cristal closed" id="cristal">
+  <div class="cristal" id="cristal">
     <div class="hor2">
       <div class="viento">
         <div class="wind1">
@@ -49,9 +49,9 @@
 
           <div class="ver">N</div>
           <div class="hor">
-            <p>W</p>
-            <div class="dart" id="winang"></div>
             <p>O</p>
+            <div class="dart" id="winang"></div>
+            <p>E</p>
           </div>
           <div class="ver">S</div>
         </div>
@@ -73,14 +73,32 @@
     </div>
   </div>
   <div class="container day" id="container">
+    <div class="header">
+
+
+      <div class="compass3 plus2" id="compbt">
+        <min>N</min>
+        <div class="hor4">
+          <min>O</min>
+          <div class="dart3"></div>
+          <min>E</min>
+        </div>
+        <min>S</min>
+      </div>
+
+      <form class="searchcity" id="searchcity">
+        <input type="text" class="search" id="search" placeholder="Introduce localizacion">
+        <button type="submit"></button>
+      </form>
+
+
+      <div class="compass2" id="gps">
+        GPS
+      </div>
 
 
 
-    <form class="searchcity" id="searchcity">
-      <input type="text" class="search" id="search" placeholder="Introduce localizacion">
-      <button type="submit"></button>
-    </form>
-
+    </div>
     <div class="tempnumber">
       <div class="tempcelcius" id="tempcelcius"></div>
       <div class="tempsimbol">ºC</div>
